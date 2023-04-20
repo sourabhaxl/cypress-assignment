@@ -15,6 +15,4 @@ it('Validates that data is generated',()=>{
 
 })
 
-
-
 })

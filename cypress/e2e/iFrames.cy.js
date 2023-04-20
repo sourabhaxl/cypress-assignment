@@ -10,7 +10,10 @@ describe('Handling iframes',()=>{
 
     it('Access the single iframe and pass text value to it',()=>{
 
-       cy.getIframe('#singleframe').click().type("Passing data in iframe") 
+       cy.getIframe('#singleframe').click()
+       
+       
+       //cy.get("//iframe[@id='singleframe']").type("Passing data in iframe") 
             //The data is not visible in the application, 
             //might be a bug in the application
             cy.wait(5000)

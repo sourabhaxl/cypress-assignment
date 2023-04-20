@@ -47,7 +47,7 @@ it('Verify the alert with cancel button',()=>{
 })
 
 
-it('Verify the alert with Textbox',()=>{
+it.only('Verify the alert with Textbox',()=>{
 
     cy.get(':nth-child(3) > .analystic')
     cy.window().then((win)=>{

@@ -1,106 +1,74 @@
-describe("Verify that accordions expand and collapse on click action", ()=>{
+describe("Verify that accordions expand and collapse on click action", () => {
+  beforeEach(() =>
+    cy.visit("https://demo.automationtesting.in/Accordion.html")
+  );
 
-beforeEach(()=>
+  it("Verify that only 4 accordions are present", () => {
+    cy.get(".panel-default").should("have.length", 4);
+  });
 
-cy.visit('https://demo.automationtesting.in/Accordion.html')
+  it("Verify that the first accordion is expanded by default", () => {
+    //Asserting with the text
+    cy.get("#collapse1 > .panel-body").should(
+      "contain.text",
+      "This Automation Testing API"
+    );
 
-)
+    //Asserting with class
+    cy.get("#collapse1").should("have.class", "panel-collapse collapse in");
+  });
 
-    it('Verify that only 4 accordions are present',()=>{
+  it("Collapse the first accordion", () => {
+    cy.get(":nth-child(1) > .panel-heading > .panel-title").click();
+    //Asserting with class
+    cy.get("#collapse1").should("have.class", "panel-collapse collapse");
+  });
 
-        cy.get(':nth-child(1) > .panel-heading > .panel-title').should('be.visible')
-        cy.get(':nth-child(2) > .panel-heading > .panel-title').should('be.visible')
-        cy.get(':nth-child(3) > .panel-heading > .panel-title').should('be.visible')
-        cy.get(':nth-child(4) > .panel-heading > .panel-title').should('be.visible')
-        
+  it("Expands the second accordion", () => {
+    cy.get(":nth-child(2) > .panel-heading > .panel-title").click();
 
-    })
+    //Asserting that accordion is Expanded
 
-    it('Verify that the first accordion is expanded by default', ()=>{
-        
-        //Asserting with the text
-        cy.get('#collapse1 > .panel-body').should('contain.text', 'This Automation Testing API')
+    cy.get("#collapse2").should("have.class", "panel-collapse collapse in");
+  });
 
-        //Asserting with class
+  it("Collapse the second accordion", () => {
+    cy.get(":nth-child(2) > .panel-heading > .panel-title").click();
 
-        cy.get('#collapse1').should('have.class', 'panel-collapse collapse in')
+    //Asserting that accordion is Collapsed
 
-        
-    })
+    cy.get("#collapse2").should("have.class", "panel-collapse collapse");
+  });
 
-    it('Collapse the first accordion', ()=>{
+  it("Expands the third accordion", () => {
+    cy.get(":nth-child(3) > .panel-heading > .panel-title").click();
 
-        cy.get(':nth-child(1) > .panel-heading > .panel-title').click()
+    //Asserting that accordion is Expanded
 
-        //Asserting with class
+    cy.get("#collapse3").should("have.class", "panel-collapse collapse in");
+  });
 
-        cy.get('#collapse1').should('have.class', 'panel-collapse collapse')
-        
-    })
+  it("Collapse the third accordion", () => {
+    cy.get(":nth-child(3) > .panel-heading > .panel-title").click();
 
+    //Asserting that accordion is Collapsed
 
-    it('Expands the second accordion',()=>{
+    cy.get("#collapse3").should("have.class", "panel-collapse collapse");
+  });
 
-        cy.get(':nth-child(2) > .panel-heading > .panel-title').click()
+  it("Expands the fourth accordion", () => {
+    cy.get(":nth-child(4) > .panel-heading > .panel-title").click();
 
-        //Asserting that accordion is Expanded
+    //Asserting that accordion is Expanded
 
-        cy.get('#collapse2').should('have.class', 'panel-collapse collapse in')
-       
+    cy.get("#collapse4").should("have.class", "panel-collapse collapse in");
+  });
 
-    })
+  it("Collapse the fourth accordion", () => {
+    cy.get(":nth-child(4) > .panel-heading > .panel-title").click();
 
-    it('Collapse the second accordion',()=>{
+    //Asserting that accordion is Collapsed
 
-        cy.get(':nth-child(2) > .panel-heading > .panel-title').click()
-       
-        //Asserting that accordion is Collapsed
-
-        cy.get('#collapse2').should('have.class', 'panel-collapse collapse')
-
-    })
-
-    it('Expands the third accordion',()=>{
-
-        cy.get(':nth-child(3) > .panel-heading > .panel-title').click()
-
-        //Asserting that accordion is Expanded
-
-        cy.get('#collapse3').should('have.class', 'panel-collapse collapse in')
-       
-
-    })
-
-    it('Collapse the third accordion',()=>{
-
-        cy.get(':nth-child(3) > .panel-heading > .panel-title').click()
-       
-        //Asserting that accordion is Collapsed
-
-        cy.get('#collapse3').should('have.class', 'panel-collapse collapse')
-
-    })
-
-    it('Expands the fourth accordion',()=>{
-
-        cy.get(':nth-child(4) > .panel-heading > .panel-title').click()
-
-        //Asserting that accordion is Expanded
-
-        cy.get('#collapse4').should('have.class', 'panel-collapse collapse in')
-        
-    })
-
-    it('Collapse the fourth accordion',()=>{
-
-        cy.get(':nth-child(4) > .panel-heading > .panel-title').click()
-
-        //Asserting that accordion is Collapsed
-
-        cy.get('#collapse4').should('have.class', 'panel-collapse collapse')
-       
-
-    })
-
-
-})
+    cy.get("#collapse4").should("have.class", "panel-collapse collapse");
+  });
+});
